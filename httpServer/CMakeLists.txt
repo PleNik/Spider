@@ -9,5 +9,3 @@ target_link_libraries(HttpServerApp pqxx)
 target_include_directories(HttpServerApp PRIVATE ${Boost_INCLUDE_DIRS})
 
 target_link_libraries(HttpServerApp ${Boost_LIBRARIES})
-
-

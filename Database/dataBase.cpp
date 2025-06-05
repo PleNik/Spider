@@ -12,7 +12,7 @@ DataBase::DataBase(ParserFileSettingsIni& parserFileSettingsIni) :
 
 void DataBase::CrateTables()
 {
-	pqxx::transaction trx(connect); //создали объект транзакции
+	pqxx::transaction trx(connect); //nicaaee iauaeo o?aicaeoee
 
 	trx.exec("CREATE TABLE IF NOT EXISTS documents ("
 		" id serial,"

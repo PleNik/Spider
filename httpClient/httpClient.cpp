@@ -16,22 +16,22 @@ int main()
 		ParserStartPage parsPage(startPage);
 		std::string port = parsPage.getPort();
 		//std::string port = "80";
-		std::cout << "port: " << port << std::endl;
+		//std::cout << "port: " << port << std::endl;
 
 		std::string protocol = parsPage.getProtocol();
-		std::cout << "protocol: " << protocol << std::endl;
+		//std::cout << "protocol: " << protocol << std::endl;
 
 		std::string host = parsPage.getHost();
 		//std::string host = "cmake.org";
-		std::cout << "host: " << host << std::endl;
+		//std::cout << "host: " << host << std::endl;
 
 		std::string target = parsPage.getTarget();
 		//std::string target = "/cmake/help/latest/generator/Visual%20Studio%2017%202022.html";
-		std::cout << "target: " << target << std::endl;
+		//std::cout << "target: " << target << std::endl;
 
 		int version = parsPage.getVersion();
 		//int version = 11;
-		std::cout << "version: " << version << std::endl;
+		//std::cout << "version: " << version << std::endl;
 		std::cout << std::endl;
 
 		//Выполняет HTTP GET и выводит ответ
@@ -88,9 +88,8 @@ int main()
 
 ParserStartPage::ParserStartPage(std::string& startPage)
 {
-	std::string _protocol = "https";
-	if (startPage.substr(0, _protocol.length()) == _protocol) {
-		protocol = _protocol;
+	if (startPage.find("https")) {
+		protocol = "https";
 	}
 	else {
 		protocol = "http";
@@ -99,23 +98,18 @@ ParserStartPage::ParserStartPage(std::string& startPage)
 	size_t posDoubleSlesh = startPage.find("//");
 	std::string strAfterDoubleSlesh = startPage.substr(posDoubleSlesh + 2);
 
-	if (strAfterDoubleSlesh.find(":") != std::string::npos) {
-		
-		size_t posDoubleDot = strAfterDoubleSlesh.find(":");
-		host = strAfterDoubleSlesh.substr(0, posDoubleDot);
-		
-		std::string strAfterDoubleDot = strAfterDoubleSlesh.substr(posDoubleDot + 1);
-		size_t posFirstSlesh = strAfterDoubleDot.find("/");
-		port = strAfterDoubleDot.substr(0, posFirstSlesh);
-
-		target = strAfterDoubleDot.substr(posFirstSlesh + 1);
+	if (strAfterDoubleSlesh.find("/") == std::string::npos) {
+		host = strAfterDoubleSlesh.substr(0);
+		target = "/";
 	}
 	else {
-		size_t posFirstSlesh = strAfterDoubleSlesh.find("/");
-		host = strAfterDoubleSlesh.substr(0, posFirstSlesh);
-
-		target = strAfterDoubleSlesh.substr(posFirstSlesh);
+		size_t posSlesh = strAfterDoubleSlesh.find("/");
+		host = strAfterDoubleSlesh.substr(0, posSlesh);
+		target = strAfterDoubleSlesh.substr(posSlesh);
 	}
+
+	std::cout << "host: " << host << std::endl;
+	std::cout << "target: " << target << std::endl;
 
 }
 

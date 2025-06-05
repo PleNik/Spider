@@ -1,4 +1,4 @@
-﻿cmake_minimum_required (VERSION 3.20)
+﻿cmake_minimum_required(VERSION 3.20)
 
 add_executable (HTTPClientApp httpClient.cpp httpClient.h
 							  ../parserFileSettingsIni.h
