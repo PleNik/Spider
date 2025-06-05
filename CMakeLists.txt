@@ -19,7 +19,7 @@ set(PostgreSQL_ADDITIONAL_VERSIONS "16")
 
 add_subdirectory(${libpqxx_DIR} libpqxx-build)
 
-#find_package(OpenSSL REQUIRED)
+find_package(OpenSSL REQUIRED)
 
 add_subdirectory(httpClient)
 

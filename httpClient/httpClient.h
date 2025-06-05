@@ -28,14 +28,12 @@ public:
 
 	std::string getProtocol();
 	std::string getHost();
-	std::string getPort();
 	std::string getTarget();
-	int getVersion();
 
 private:
 	std::string protocol;
 	std::string host;
-	std::string port = "80";
 	std::string target;
-	int version = 11;
 };
+
+std::string getHtmlPage(ParserStartPage& address);
