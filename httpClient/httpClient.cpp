@@ -1,4 +1,5 @@
 ﻿#include "httpClient.h"
+#include <boost/asio/ssl.hpp>
 
 int main()
 {
@@ -124,6 +125,7 @@ std::string getHtmlPage(ParserStartPage& address)
 	}
 	else {
 		//обработка https-протокола
+		boost::asio::ssl::context ctx{ boost::asio::ssl::context::sslv23_client };
 	}
 
 	return htmlPage;

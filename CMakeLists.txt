@@ -2,7 +2,8 @@
 
 project(Spider)
 
-set(OPENSSL_ROOT_DIR "C:\\Program Files\\OpenSSL-Win64")
+set(OPENSSL_ROOT_DIR "D:/OpenSSL-3.0.16")
+
 
 set(BOOST_ROOT "D:/boost_1_88_0")
 
