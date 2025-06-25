@@ -1,5 +1,5 @@
 ﻿#include "httpClient.h"
-#include <boost/asio/ssl.hpp>
+
 
 int main()
 {
@@ -15,7 +15,7 @@ int main()
 
 		ParserStartPage parsPage(startPage); //сохранили порт, хост и таргет в поля класса ParserStartPage
 
-		std::string htmlPage = getHtmlPage(parsPage);
+		std::string htmlPage = getHtmlPage(parsPage); //получили html-страницу
 
 		std::cout << htmlPage << std::endl;
 	
@@ -48,9 +48,6 @@ ParserStartPage::ParserStartPage(std::string& startPage)
 		host = strAfterDoubleSlesh.substr(0, posSlesh);
 		target = strAfterDoubleSlesh.substr(posSlesh);
 	}
-
-	//std::cout << "host: " << host << std::endl;
-	//std::cout << "target: " << target << std::endl;
 
 }
 
@@ -125,7 +122,34 @@ std::string getHtmlPage(ParserStartPage& address)
 	}
 	else {
 		//обработка https-протокола
-		boost::asio::ssl::context ctx{ boost::asio::ssl::context::sslv23_client };
+
+		ssl::context ctx(ssl::context::sslv23_client);
+		ctx.set_default_verify_paths();
+
+		beast::ssl_stream<beast::tcp_stream> stream(ioc, ctx);
+		stream.set_verify_mode(ssl::verify_none);
+
+		stream.set_verify_callback([](bool preverified, ssl::verify_context& ctx) {
+			return true;
+		});
+
+		ip::tcp::resolver resolver(ioc);
+		get_lowest_layer(stream).connect(resolver.resolve(host, "https" ));
+		get_lowest_layer(stream).expires_after(std::chrono::seconds(30));
+
+		http::request<http::empty_body> req{ http::verb::get, target, 11 };
+		req.set(http::field::host, host);
+		req.set(http::field::user_agent, BOOST_BEAST_VERSION_STRING);
+
+		stream.handshake(ssl::stream_base::client);
+		http::write(stream, req);
+
+		beast::flat_buffer buffer;
+		http::response<http::dynamic_body> res;
+		http::read(stream, buffer, res);
+
+		htmlPage = buffers_to_string(res.body().data());
+
 	}
 
 	return htmlPage;
