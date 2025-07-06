@@ -1,18 +1,18 @@
 #include "dataBase.h"
 
-DataBase::DataBase(ParserFileSettingsIni& parserFileSettingsIni) :
-	connect("host=" + parserFileSettingsIni.getDBaseHost() +
-			" port=" + parserFileSettingsIni.getDBasePort() +
-			" dbname=" + parserFileSettingsIni.getDBaseName() +
-			" user=" + parserFileSettingsIni.getDBaseUser() +
-			" password=" + parserFileSettingsIni.getDBasePassword())
+DataBase::DataBase(ParserFileSettingsIni& parserIni) :
+	connect("host=" + parserIni.getDBaseHost() +
+			" port=" + parserIni.getDBasePort() +
+			" dbname=" + parserIni.getDBaseName() +
+			" user=" + parserIni.getDBaseUser() +
+			" password=" + parserIni.getDBasePassword())
 {
 	CrateTables();
 }
 
 void DataBase::CrateTables()
 {
-	pqxx::transaction trx(connect); //nicaaee iauaeo o?aicaeoee
+	pqxx::transaction trx(connect);
 
 	trx.exec("CREATE TABLE IF NOT EXISTS documents ("
 		" id serial,"

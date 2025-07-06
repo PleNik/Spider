@@ -10,14 +10,16 @@ int main()
 
 	try {
 		ParserFileSettingsIni parserIniFile(path_in); //сохранили данные из settings.ini в поля класса ParserFileSettingsIni 
+		
 		std::string startPage = parserIniFile.getStartPage(); //получили стартовую станицу
+		
 		DataBase dataBase(parserIniFile); //создали в базе данных таблицы
 
 		ParserStartPage parsPage(startPage); //сохранили порт, хост и таргет в поля класса ParserStartPage
 
 		std::string htmlPage = getHtmlPage(parsPage); //получили html-страницу
 
-		std::cout << htmlPage << std::endl;
+		std::cout << htmlPage << std::endl; //удалить
 	
 	}
 	catch (const std::exception& ex) {

@@ -7,9 +7,9 @@
 
 class DataBase {
 public:
-	DataBase(ParserFileSettingsIni& parserFileSettingsIni);
+	DataBase(ParserFileSettingsIni& parserIni);
 	void CrateTables();
 
-private:
+protected:
 	pqxx::connection connect;
 };

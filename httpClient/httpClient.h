@@ -30,6 +30,12 @@ using std::placeholders::_2;
 
 using tcp = net::ip::tcp;
 
+enum class ProtocolType
+{
+	HTTP = 0,
+	HTTPS = 1
+};
+
 class ParserStartPage {
 public:
 	ParserStartPage(std::string& startPage);
