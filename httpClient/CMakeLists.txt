@@ -1,6 +1,7 @@
 ﻿cmake_minimum_required(VERSION 3.20)
 
 add_executable (HTTPClientApp httpClient.cpp httpClient.h
+							  urlAddress.h
 							  ../parserFileSettingsIni.h
 							  ../parserFileSettingsIni.cpp
 							  ../Database/dataBase.h

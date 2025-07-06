@@ -15,6 +15,7 @@
 
 #include "../parserFileSettingsIni.h"
 #include "../Database/dataBase.h"
+#include "../Database/dataBaseWorker.h"
 //#include <Windows.h>
 
 #pragma execution_character_set("utf-8")
@@ -30,25 +31,6 @@ using std::placeholders::_2;
 
 using tcp = net::ip::tcp;
 
-enum class ProtocolType
-{
-	HTTP = 0,
-	HTTPS = 1
-};
-
-struct Address
-{
-	ProtocolType protocol;
-	std::string hostName;
-	std::string target;
-
-	bool operator==(const Address& address) const
-	{
-		return protocol == address.protocol
-			&& hostName == address.hostName
-			&& target == address.target;
-	}
-};
 
 class ParserStartPage {
 public:

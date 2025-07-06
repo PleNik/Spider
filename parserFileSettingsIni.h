@@ -16,7 +16,7 @@ public:
 	std::string getStartPage();
 	int getRecursionDepth();
 
-private:
+protected:
 	std::string dBaseHost;
 	std::string dBasePort;
 	std::string dBaseName;

@@ -3,6 +3,7 @@
 #include "parserFileSettingsIni.h"
 
 ParserFileSettingsIni::ParserFileSettingsIni(const std::string& fileName) {
+
 	std::ifstream settingsIni(fileName);
 
 	if (!settingsIni.is_open()) {
