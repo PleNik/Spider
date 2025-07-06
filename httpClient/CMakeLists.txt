@@ -5,6 +5,8 @@ add_executable (HTTPClientApp httpClient.cpp httpClient.h
 							  ../parserFileSettingsIni.cpp
 							  ../Database/dataBase.h
 							  ../Database/dataBase.cpp
+							  ../Database/dataBaseWorker.h
+							  ../Database/dataBaseWorker.cpp
 )
 
 target_compile_features(HTTPClientApp PRIVATE cxx_std_17) 
