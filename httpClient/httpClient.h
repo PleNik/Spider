@@ -36,6 +36,20 @@ enum class ProtocolType
 	HTTPS = 1
 };
 
+struct Address
+{
+	ProtocolType protocol;
+	std::string hostName;
+	std::string target;
+
+	bool operator==(const Address& address) const
+	{
+		return protocol == address.protocol
+			&& hostName == address.hostName
+			&& target == address.target;
+	}
+};
+
 class ParserStartPage {
 public:
 	ParserStartPage(std::string& startPage);
