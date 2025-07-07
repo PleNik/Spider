@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <string>
+#include <queue>
 
 //подключаем библиотеку Boost
 #include <boost/beast/core.hpp>
@@ -17,6 +18,7 @@
 #include "../Database/dataBase.h"
 #include "../Database/dataBaseWorker.h"
 #include "sharedAddress.h"
+#include "pickOutLinks.h"
 //#include <Windows.h>
 
 #pragma execution_character_set("utf-8")
@@ -48,3 +50,8 @@ private:
 };
 
 std::string getHtmlPage(ParserStartPage& address);
+
+void  poolOfThreadsWorker();
+
+void linkParser(DatabaseWorker& databaseWorker, UrlAddress link,
+	int depth, int index, int ofTotalCount);

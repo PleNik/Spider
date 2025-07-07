@@ -1,5 +1,9 @@
 ﻿#include "httpClient.h"
 
+std::mutex mtx;
+bool stoppedPoolOfThreads = false;
+std::condition_variable cv;
+std::queue<std::function<void()>> tasks;
 
 int main()
 {
@@ -19,9 +23,38 @@ int main()
 
 		UrlAddress link = sharedAddress(startPage); //сохранили порт, хост и таргет в поля структуры UrlAddress
 
+		int depth = parserIniFile.getRecursionDepth();
+
 		std::cout << "HostName: " << link.hostName << "\tProtocol: " //удалить
 			<< static_cast<int>(link.protocol) << "\tTarget: "
 			<< link.target << std::endl;
+
+		int numberOfThreads = std::thread::hardware_concurrency();
+
+		std::vector<std::thread> poolOfThreads;
+
+		for (size_t i = 0; i < numberOfThreads; i++) {
+			poolOfThreads.emplace_back(poolOfThreadsWorker);
+		}
+
+		{
+			std::lock_guard<std::mutex> lg(mtx);
+			tasks.push([&databaseWorker, link, depth]() { linkParser(databaseWorker, link, depth, 1, 1); });
+			cv.notify_one();
+		}
+
+		std::this_thread::sleep_for(std::chrono::seconds(2));
+
+		{
+			std::lock_guard<std::mutex> lg(mtx);
+			stoppedPoolOfThreads = true;
+			cv.notify_all();
+		}
+
+
+		for (auto& thread : poolOfThreads) {
+			thread.join();
+		}
 	
 	}
 	catch (const std::exception& ex) {
@@ -70,19 +103,18 @@ std::string ParserStartPage::getTarget()
 	return target;
 }
 
-std::string getHtmlPage(ParserStartPage& address)
+std::string getHtmlPage(const UrlAddress& address)
 {
 	std::string htmlPage;
 
-	std::string protocol = address.getProtocol();
-	std::string host = address.getHost();
-	std::string target = address.getTarget();
+	std::string host = address.hostName;
+	std::string target = address.target;
 
 	//io_context требуется для всех операций ввода - вывода.
 	net::io_context ioc;
 
 	//Выполняет HTTP GET и выводит ответ
-	if (protocol == "http") {
+	if (address.protocol == ProtocolType::HTTP) {
 
 		//Эти объекты выполняют ввод-вывод
 		tcp::resolver resolver(ioc);
@@ -157,4 +189,42 @@ std::string getHtmlPage(ParserStartPage& address)
 	}
 
 	return htmlPage;
+}
+
+void  poolOfThreadsWorker() {
+	std::unique_lock<std::mutex> ul(mtx);
+
+	while (!stoppedPoolOfThreads || !tasks.empty()) {
+		if (tasks.empty()) {
+			cv.wait(ul);
+		}
+		else {
+			std::cout << "tasks is not empty" << std::endl; //удалить
+			std::cout << tasks.size() << std::endl; //удалить
+			std::function<void()> task = tasks.front();
+			tasks.pop();
+			ul.unlock();
+			task();
+			ul.lock();
+			std::cout << tasks.size() << std::endl; //удалить
+		}
+	}
+}
+
+void linkParser(DatabaseWorker& databaseWorker, UrlAddress link, int depth, int index, int ofTotalCount)
+{
+	std::this_thread::sleep_for(std::chrono::milliseconds(500));
+
+	std::string htmlPage = getHtmlPage(link);
+
+	if (htmlPage.size() == 0)
+	{
+		std::cout << "Failed to parse: " << link.hostName << " " << link.target << std::endl;
+
+		return;
+	}
+	std::cout << std::endl; //удалить
+	std::cout << htmlPage << std::endl; //удалить
+
+	std::vector<std::string> rawLinks = pickOutLinks(htmlPage);
 }
