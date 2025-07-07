@@ -3,10 +3,10 @@
 DatabaseWorker::DatabaseWorker(ParserFileSettingsIni& iniParser) :
 	DataBase(iniParser)
 {
-	connect.prepare("insert_document", "INSERT INTO documents (protocol, host, query) VALUES ($1, $2, $3) RETURNING id;");
+	connect.prepare("insert_document", "INSERT INTO documents (protocol, host, target) VALUES ($1, $2, $3) RETURNING id;");
 	connect.prepare("insert_word", "INSERT INTO words (id) VALUES ($1) ON CONFLICT (id) DO NOTHING;");
-	connect.prepare("insert_word_for_document", "INSERT INTO words_documents (word_id, document_id, amount) VALUES ($1, $2, $3) RETURNING id;");
-	connect.prepare("document_count", "SELECT COUNT(*) from documents where protocol=$1 and host=$2 and query=$3");
+	connect.prepare("insert_word_for_document", "INSERT INTO words_usage (word_id, document_id, quantity) VALUES ($1, $2, $3) RETURNING id;");
+	connect.prepare("document_count", "SELECT COUNT(*) from documents where protocol=$1 and host=$2 and target=$3");
 }
 
 bool DatabaseWorker::documentExists(const UrlAddress& address)

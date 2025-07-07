@@ -11,6 +11,8 @@ int main()
 	try {
 		ParserFileSettingsIni parserIniFile(path_in); //сохранили данные из settings.ini в поля класса ParserFileSettingsIni 
 		
+		DatabaseWorker databaseWorker(parserIniFile);
+
 		std::string startPage = parserIniFile.getStartPage(); //получили стартовую станицу
 		
 		DataBase dataBase(parserIniFile); //создали в базе данных таблицы

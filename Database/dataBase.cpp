@@ -16,19 +16,21 @@ void DataBase::CrateTables()
 
 	trx.exec("CREATE TABLE IF NOT EXISTS documents ("
 		" id serial,"
-		" document text NOT NULL,"
+		" protocol int NOT NULL,"
+		" host text NOT NULL, "
+		" target text NOT NULL, "
 		" CONSTRAINT documents_pk PRIMARY KEY(id)); ");
 
 	trx.exec("CREATE TABLE IF NOT EXISTS words ("
-		" id serial,"
-		" word varchar NOT NULL, "
-		" CONSTRAINT word_pk PRIMARY KEY(id)); ");
+		" id varchar(255),"
+		" CONSTRAINT words_pk PRIMARY KEY(id)); ");
 
 	trx.exec("CREATE TABLE IF NOT EXISTS words_usage ("
 		" id serial,"
 		" document_id integer NOT NULL references documents(id),"
-		" word_id integer NOT NULL references words(id), "
-		" CONSTRAINT word_usage_pk PRIMARY KEY(id)); ");
+		" word_id varchar(255) NOT NULL references words(id), "
+		" quantity integer NOT NULL, "
+		" CONSTRAINT words_usage_pk PRIMARY KEY(id)); ");
 
 	trx.commit();
 
