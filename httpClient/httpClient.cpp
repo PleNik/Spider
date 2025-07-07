@@ -226,8 +226,7 @@ void linkParser(DatabaseWorker& databaseWorker, UrlAddress link, int depth, int 
 	std::unordered_set<UrlAddress> linksUnique = uniqueLinks(rawLinks, link.protocol,
 		link.hostName);
 
-	//удалить
-	for (const auto& link : linksUnique) {
-		std::cout << "HostName: " << link.hostName << "\tTarget: " << link.target << std::endl;
-	}
+	std::string text = removeHtmlTags(htmlPage); //удаление html-тегов
+
+	std::cout << text << std::endl; //удалить
 }

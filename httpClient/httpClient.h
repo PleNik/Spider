@@ -20,6 +20,7 @@
 #include "sharedAddress.h"
 #include "pickOutLinks.h"
 #include "uniqueLinks.h"
+#include "removeHTMLTags.h"
 //#include <Windows.h>
 
 #pragma execution_character_set("utf-8")
