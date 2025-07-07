@@ -199,14 +199,11 @@ void  poolOfThreadsWorker() {
 			cv.wait(ul);
 		}
 		else {
-			std::cout << "tasks is not empty" << std::endl; //удалить
-			std::cout << tasks.size() << std::endl; //удалить
 			std::function<void()> task = tasks.front();
 			tasks.pop();
 			ul.unlock();
 			task();
 			ul.lock();
-			std::cout << tasks.size() << std::endl; //удалить
 		}
 	}
 }
@@ -219,12 +216,18 @@ void linkParser(DatabaseWorker& databaseWorker, UrlAddress link, int depth, int 
 
 	if (htmlPage.size() == 0)
 	{
-		std::cout << "Failed to parse: " << link.hostName << " " << link.target << std::endl;
+		std::cout << "Analysis error: " << link.hostName << " " << link.target << std::endl;
 
 		return;
 	}
-	std::cout << std::endl; //удалить
-	std::cout << htmlPage << std::endl; //удалить
 
 	std::vector<std::string> rawLinks = pickOutLinks(htmlPage);
+
+	std::unordered_set<UrlAddress> linksUnique = uniqueLinks(rawLinks, link.protocol,
+		link.hostName);
+
+	//удалить
+	for (const auto& link : linksUnique) {
+		std::cout << "HostName: " << link.hostName << "\tTarget: " << link.target << std::endl;
+	}
 }

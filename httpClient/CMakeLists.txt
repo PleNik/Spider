@@ -4,6 +4,7 @@ add_executable (HTTPClientApp httpClient.cpp httpClient.h
 							  urlAddress.h
 							  sharedAddress.h
 							  pickOutLinks.h
+							  uniqueLinks.h
 							  ../parserFileSettingsIni.h
 							  ../parserFileSettingsIni.cpp
 							  ../Database/dataBase.h
