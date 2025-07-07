@@ -16,6 +16,7 @@
 #include "../parserFileSettingsIni.h"
 #include "../Database/dataBase.h"
 #include "../Database/dataBaseWorker.h"
+#include "sharedAddress.h"
 //#include <Windows.h>
 
 #pragma execution_character_set("utf-8")

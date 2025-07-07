@@ -17,11 +17,11 @@ int main()
 		
 		DataBase dataBase(parserIniFile); //создали в базе данных таблицы
 
-		ParserStartPage parsPage(startPage); //сохранили порт, хост и таргет в поля класса ParserStartPage
+		UrlAddress link = sharedAddress(startPage); //сохранили порт, хост и таргет в поля структуры UrlAddress
 
-		std::string htmlPage = getHtmlPage(parsPage); //получили html-страницу
-
-		std::cout << htmlPage << std::endl; //удалить
+		std::cout << "HostName: " << link.hostName << "\tProtocol: " //удалить
+			<< static_cast<int>(link.protocol) << "\tTarget: "
+			<< link.target << std::endl;
 	
 	}
 	catch (const std::exception& ex) {
