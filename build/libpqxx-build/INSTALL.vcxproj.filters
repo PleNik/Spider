@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="D:\Projects\DiplomProject\Spider\build\CMakeFiles\a02f77ab1a52f86f8e529e709c5dffaa\INSTALL_force.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{C02A191C-7290-37A8-9D49-D520F079A2FB}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

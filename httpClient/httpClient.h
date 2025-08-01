@@ -20,7 +20,7 @@
 #include "sharedAddress.h"
 #include "pickOutLinks.h"
 #include "uniqueLinks.h"
-#include "removeHTMLTags.h"
+#include "indexer.h"
 //#include <Windows.h>
 
 #pragma execution_character_set("utf-8")
@@ -36,22 +36,7 @@ using std::placeholders::_2;
 
 using tcp = net::ip::tcp;
 
-
-class ParserStartPage {
-public:
-	ParserStartPage(std::string& startPage);
-
-	std::string getProtocol();
-	std::string getHost();
-	std::string getTarget();
-
-private:
-	std::string protocol;
-	std::string host;
-	std::string target;
-};
-
-std::string getHtmlPage(ParserStartPage& address);
+std::string getHtmlPage(const UrlAddress& address);
 
 void  poolOfThreadsWorker();
 

@@ -13,8 +13,8 @@ public:
 
 	bool documentExists(const UrlAddress& address);
 
-	void addDocumentWithWordsIfNotExists(const UrlAddress& address,
-		const std::map<std::string, int>& wordCount);
+	void addWords(const UrlAddress& address,
+		const std::map<std::string, int>& wordsCount);
 
 protected:
 	std::mutex documentAddMutex;

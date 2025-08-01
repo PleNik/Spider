@@ -1,0 +1,184 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ResolveNugetPackages>false</ResolveNugetPackages>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|x64">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|x64">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{3B057DAD-7B46-3326-9C29-A14309A64D24}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0.26100.0</WindowsTargetPlatformVersion>
+    <Platform>x64</Platform>
+    <ProjectName>ALL_BUILD</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="D:\libpqxx-7.10.1\CMakeLists.txt">
+      <UseUtf8Encoding>Always</UseUtf8Encoding>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule D:/libpqxx-7.10.1/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SD:/Projects/DiplomProject/Spider -BD:/Projects/DiplomProject/Spider/build --check-stamp-file D:/Projects/DiplomProject/Spider/build/libpqxx-build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Program Files\CMake\share\cmake-3.28\Modules\BasicConfigVersion-SameMajorVersion.cmake.in;C:\Program Files\CMake\share\cmake-3.28\Modules\CMakeFindDependencyMacro.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CMakePackageConfigHelpers.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CPack.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CPackComponent.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CheckFunctionExists.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\FindPostgreSQL.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\GNUInstallDirs.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\SelectLibraryConfigurations.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\WriteBasicConfigVersionFile.cmake;C:\Program Files\CMake\share\cmake-3.28\Templates\CPackConfig.cmake.in;D:\Projects\DiplomProject\Spider\build\libpqxx-build\include\pqxx\config_cmake.h.in;D:\libpqxx-7.10.1\cmake\config.cmake;D:\libpqxx-7.10.1\cmake\libpqxx-config.cmake;D:\libpqxx-7.10.1\cmake\pqxx_cxx_feature_checks.cmake;D:\libpqxx-7.10.1\config-tests\PQXX_HAVE_ASSUME.cxx;D:\libpqxx-7.10.1\config-tests\PQXX_HAVE_CHARCONV_FLOAT.cxx;D:\libpqxx-7.10.1\config-tests\PQXX_HAVE_CHARCONV_INT.cxx;D:\libpqxx-7.10.1\config-tests\PQXX_HAVE_CMP.cxx;D:\libpqxx-7.10.1\config-tests\PQXX_HAVE_CONCEPTS.cxx;D:\libpqxx-7.10.1\config-tests\PQXX_HAVE_CXA_DEMANGLE.cxx;D:\libpqxx-7.10.1\config-tests\PQXX_HAVE_GCC_PURE.cxx;D:\libpqxx-7.10.1\config-tests\PQXX_HAVE_GCC_VISIBILITY.cxx;D:\libpqxx-7.10.1\config-tests\PQXX_HAVE_LIKELY.cxx;D:\libpqxx-7.10.1\config-tests\PQXX_HAVE_MULTIDIM.cxx;D:\libpqxx-7.10.1\config-tests\PQXX_HAVE_PATH.cxx;D:\libpqxx-7.10.1\config-tests\PQXX_HAVE_POLL.cxx;D:\libpqxx-7.10.1\config-tests\PQXX_HAVE_SLEEP_FOR.cxx;D:\libpqxx-7.10.1\config-tests\PQXX_HAVE_SOURCE_LOCATION.cxx;D:\libpqxx-7.10.1\config-tests\PQXX_HAVE_SPAN.cxx;D:\libpqxx-7.10.1\config-tests\PQXX_HAVE_SSIZE.cxx;D:\libpqxx-7.10.1\config-tests\PQXX_HAVE_STRERROR_R.cxx;D:\libpqxx-7.10.1\config-tests\PQXX_HAVE_STRERROR_S.cxx;D:\libpqxx-7.10.1\config-tests\PQXX_HAVE_THREAD_LOCAL.cxx;D:\libpqxx-7.10.1\config-tests\PQXX_HAVE_YEAR_MONTH_DAY.cxx;D:\libpqxx-7.10.1\config-tests\no_need_fslib.cxx;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\Projects\DiplomProject\Spider\build\libpqxx-build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule D:/libpqxx-7.10.1/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SD:/Projects/DiplomProject/Spider -BD:/Projects/DiplomProject/Spider/build --check-stamp-file D:/Projects/DiplomProject/Spider/build/libpqxx-build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Program Files\CMake\share\cmake-3.28\Modules\BasicConfigVersion-SameMajorVersion.cmake.in;C:\Program Files\CMake\share\cmake-3.28\Modules\CMakeFindDependencyMacro.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CMakePackageConfigHelpers.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CPack.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CPackComponent.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CheckFunctionExists.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\FindPostgreSQL.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\GNUInstallDirs.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\SelectLibraryConfigurations.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\WriteBasicConfigVersionFile.cmake;C:\Program Files\CMake\share\cmake-3.28\Templates\CPackConfig.cmake.in;D:\Projects\DiplomProject\Spider\build\libpqxx-build\include\pqxx\config_cmake.h.in;D:\libpqxx-7.10.1\cmake\config.cmake;D:\libpqxx-7.10.1\cmake\libpqxx-config.cmake;D:\libpqxx-7.10.1\cmake\pqxx_cxx_feature_checks.cmake;D:\libpqxx-7.10.1\config-tests\PQXX_HAVE_ASSUME.cxx;D:\libpqxx-7.10.1\config-tests\PQXX_HAVE_CHARCONV_FLOAT.cxx;D:\libpqxx-7.10.1\config-tests\PQXX_HAVE_CHARCONV_INT.cxx;D:\libpqxx-7.10.1\config-tests\PQXX_HAVE_CMP.cxx;D:\libpqxx-7.10.1\config-tests\PQXX_HAVE_CONCEPTS.cxx;D:\libpqxx-7.10.1\config-tests\PQXX_HAVE_CXA_DEMANGLE.cxx;D:\libpqxx-7.10.1\config-tests\PQXX_HAVE_GCC_PURE.cxx;D:\libpqxx-7.10.1\config-tests\PQXX_HAVE_GCC_VISIBILITY.cxx;D:\libpqxx-7.10.1\config-tests\PQXX_HAVE_LIKELY.cxx;D:\libpqxx-7.10.1\config-tests\PQXX_HAVE_MULTIDIM.cxx;D:\libpqxx-7.10.1\config-tests\PQXX_HAVE_PATH.cxx;D:\libpqxx-7.10.1\config-tests\PQXX_HAVE_POLL.cxx;D:\libpqxx-7.10.1\config-tests\PQXX_HAVE_SLEEP_FOR.cxx;D:\libpqxx-7.10.1\config-tests\PQXX_HAVE_SOURCE_LOCATION.cxx;D:\libpqxx-7.10.1\config-tests\PQXX_HAVE_SPAN.cxx;D:\libpqxx-7.10.1\config-tests\PQXX_HAVE_SSIZE.cxx;D:\libpqxx-7.10.1\config-tests\PQXX_HAVE_STRERROR_R.cxx;D:\libpqxx-7.10.1\config-tests\PQXX_HAVE_STRERROR_S.cxx;D:\libpqxx-7.10.1\config-tests\PQXX_HAVE_THREAD_LOCAL.cxx;D:\libpqxx-7.10.1\config-tests\PQXX_HAVE_YEAR_MONTH_DAY.cxx;D:\libpqxx-7.10.1\config-tests\no_need_fslib.cxx;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\Projects\DiplomProject\Spider\build\libpqxx-build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule D:/libpqxx-7.10.1/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SD:/Projects/DiplomProject/Spider -BD:/Projects/DiplomProject/Spider/build --check-stamp-file D:/Projects/DiplomProject/Spider/build/libpqxx-build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Program Files\CMake\share\cmake-3.28\Modules\BasicConfigVersion-SameMajorVersion.cmake.in;C:\Program Files\CMake\share\cmake-3.28\Modules\CMakeFindDependencyMacro.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CMakePackageConfigHelpers.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CPack.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CPackComponent.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CheckFunctionExists.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\FindPostgreSQL.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\GNUInstallDirs.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\SelectLibraryConfigurations.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\WriteBasicConfigVersionFile.cmake;C:\Program Files\CMake\share\cmake-3.28\Templates\CPackConfig.cmake.in;D:\Projects\DiplomProject\Spider\build\libpqxx-build\include\pqxx\config_cmake.h.in;D:\libpqxx-7.10.1\cmake\config.cmake;D:\libpqxx-7.10.1\cmake\libpqxx-config.cmake;D:\libpqxx-7.10.1\cmake\pqxx_cxx_feature_checks.cmake;D:\libpqxx-7.10.1\config-tests\PQXX_HAVE_ASSUME.cxx;D:\libpqxx-7.10.1\config-tests\PQXX_HAVE_CHARCONV_FLOAT.cxx;D:\libpqxx-7.10.1\config-tests\PQXX_HAVE_CHARCONV_INT.cxx;D:\libpqxx-7.10.1\config-tests\PQXX_HAVE_CMP.cxx;D:\libpqxx-7.10.1\config-tests\PQXX_HAVE_CONCEPTS.cxx;D:\libpqxx-7.10.1\config-tests\PQXX_HAVE_CXA_DEMANGLE.cxx;D:\libpqxx-7.10.1\config-tests\PQXX_HAVE_GCC_PURE.cxx;D:\libpqxx-7.10.1\config-tests\PQXX_HAVE_GCC_VISIBILITY.cxx;D:\libpqxx-7.10.1\config-tests\PQXX_HAVE_LIKELY.cxx;D:\libpqxx-7.10.1\config-tests\PQXX_HAVE_MULTIDIM.cxx;D:\libpqxx-7.10.1\config-tests\PQXX_HAVE_PATH.cxx;D:\libpqxx-7.10.1\config-tests\PQXX_HAVE_POLL.cxx;D:\libpqxx-7.10.1\config-tests\PQXX_HAVE_SLEEP_FOR.cxx;D:\libpqxx-7.10.1\config-tests\PQXX_HAVE_SOURCE_LOCATION.cxx;D:\libpqxx-7.10.1\config-tests\PQXX_HAVE_SPAN.cxx;D:\libpqxx-7.10.1\config-tests\PQXX_HAVE_SSIZE.cxx;D:\libpqxx-7.10.1\config-tests\PQXX_HAVE_STRERROR_R.cxx;D:\libpqxx-7.10.1\config-tests\PQXX_HAVE_STRERROR_S.cxx;D:\libpqxx-7.10.1\config-tests\PQXX_HAVE_THREAD_LOCAL.cxx;D:\libpqxx-7.10.1\config-tests\PQXX_HAVE_YEAR_MONTH_DAY.cxx;D:\libpqxx-7.10.1\config-tests\no_need_fslib.cxx;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\Projects\DiplomProject\Spider\build\libpqxx-build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule D:/libpqxx-7.10.1/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SD:/Projects/DiplomProject/Spider -BD:/Projects/DiplomProject/Spider/build --check-stamp-file D:/Projects/DiplomProject/Spider/build/libpqxx-build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Program Files\CMake\share\cmake-3.28\Modules\BasicConfigVersion-SameMajorVersion.cmake.in;C:\Program Files\CMake\share\cmake-3.28\Modules\CMakeFindDependencyMacro.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CMakePackageConfigHelpers.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CPack.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CPackComponent.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CheckFunctionExists.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\FindPostgreSQL.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\GNUInstallDirs.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\SelectLibraryConfigurations.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\WriteBasicConfigVersionFile.cmake;C:\Program Files\CMake\share\cmake-3.28\Templates\CPackConfig.cmake.in;D:\Projects\DiplomProject\Spider\build\libpqxx-build\include\pqxx\config_cmake.h.in;D:\libpqxx-7.10.1\cmake\config.cmake;D:\libpqxx-7.10.1\cmake\libpqxx-config.cmake;D:\libpqxx-7.10.1\cmake\pqxx_cxx_feature_checks.cmake;D:\libpqxx-7.10.1\config-tests\PQXX_HAVE_ASSUME.cxx;D:\libpqxx-7.10.1\config-tests\PQXX_HAVE_CHARCONV_FLOAT.cxx;D:\libpqxx-7.10.1\config-tests\PQXX_HAVE_CHARCONV_INT.cxx;D:\libpqxx-7.10.1\config-tests\PQXX_HAVE_CMP.cxx;D:\libpqxx-7.10.1\config-tests\PQXX_HAVE_CONCEPTS.cxx;D:\libpqxx-7.10.1\config-tests\PQXX_HAVE_CXA_DEMANGLE.cxx;D:\libpqxx-7.10.1\config-tests\PQXX_HAVE_GCC_PURE.cxx;D:\libpqxx-7.10.1\config-tests\PQXX_HAVE_GCC_VISIBILITY.cxx;D:\libpqxx-7.10.1\config-tests\PQXX_HAVE_LIKELY.cxx;D:\libpqxx-7.10.1\config-tests\PQXX_HAVE_MULTIDIM.cxx;D:\libpqxx-7.10.1\config-tests\PQXX_HAVE_PATH.cxx;D:\libpqxx-7.10.1\config-tests\PQXX_HAVE_POLL.cxx;D:\libpqxx-7.10.1\config-tests\PQXX_HAVE_SLEEP_FOR.cxx;D:\libpqxx-7.10.1\config-tests\PQXX_HAVE_SOURCE_LOCATION.cxx;D:\libpqxx-7.10.1\config-tests\PQXX_HAVE_SPAN.cxx;D:\libpqxx-7.10.1\config-tests\PQXX_HAVE_SSIZE.cxx;D:\libpqxx-7.10.1\config-tests\PQXX_HAVE_STRERROR_R.cxx;D:\libpqxx-7.10.1\config-tests\PQXX_HAVE_STRERROR_S.cxx;D:\libpqxx-7.10.1\config-tests\PQXX_HAVE_THREAD_LOCAL.cxx;D:\libpqxx-7.10.1\config-tests\PQXX_HAVE_YEAR_MONTH_DAY.cxx;D:\libpqxx-7.10.1\config-tests\no_need_fslib.cxx;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\Projects\DiplomProject\Spider\build\libpqxx-build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="D:\Projects\DiplomProject\Spider\build\ZERO_CHECK.vcxproj">
+      <Project>{7B75D2F0-1DA4-3FE3-AE35-955A57147E5E}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\DiplomProject\Spider\build\libpqxx-build\src\pqxx.vcxproj">
+      <Project>{3A9A21C6-A5AA-3502-AA2F-3A2A2718BA6C}</Project>
+      <Name>pqxx</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

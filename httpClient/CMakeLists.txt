@@ -5,7 +5,7 @@ add_executable (HTTPClientApp httpClient.cpp httpClient.h
 							  sharedAddress.h
 							  pickOutLinks.h
 							  uniqueLinks.h
-							  removeHTMLTags.h
+							  indexer.h
 							  ../parserFileSettingsIni.h
 							  ../parserFileSettingsIni.cpp
 							  ../Database/dataBase.h

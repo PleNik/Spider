@@ -24,13 +24,9 @@ int main()
 		UrlAddress link = sharedAddress(startPage); //сохранили порт, хост и таргет в поля структуры UrlAddress
 
 		int depth = parserIniFile.getRecursionDepth();
-
-		std::cout << "HostName: " << link.hostName << "\tProtocol: " //удалить
-			<< static_cast<int>(link.protocol) << "\tTarget: "
-			<< link.target << std::endl;
-
+		
 		int numberOfThreads = std::thread::hardware_concurrency();
-
+		
 		std::vector<std::thread> poolOfThreads;
 
 		for (size_t i = 0; i < numberOfThreads; i++) {
@@ -51,7 +47,6 @@ int main()
 			cv.notify_all();
 		}
 
-
 		for (auto& thread : poolOfThreads) {
 			thread.join();
 		}
@@ -64,45 +59,6 @@ int main()
 	return 0;
 }
 
-ParserStartPage::ParserStartPage(std::string& startPage)
-{
-	if (startPage.find("https") != std::string::npos) {
-		protocol = "https";
-	}
-	else {
-		protocol = "http";
-	}
-	
-	size_t posDoubleSlesh = startPage.find("//");
-	std::string strAfterDoubleSlesh = startPage.substr(posDoubleSlesh + 2);
-
-	if (strAfterDoubleSlesh.find("/") == std::string::npos) {
-		host = strAfterDoubleSlesh.substr(0);
-		target = "/";
-	}
-	else {
-		size_t posSlesh = strAfterDoubleSlesh.find("/");
-		host = strAfterDoubleSlesh.substr(0, posSlesh);
-		target = strAfterDoubleSlesh.substr(posSlesh);
-	}
-
-}
-
-std::string ParserStartPage::getProtocol()
-{
-	return protocol;
-}
-
-std::string ParserStartPage::getHost()
-{
-	return host;
-}
-
-std::string ParserStartPage::getTarget()
-{
-	return target;
-}
-
 std::string getHtmlPage(const UrlAddress& address)
 {
 	std::string htmlPage;
@@ -110,13 +66,10 @@ std::string getHtmlPage(const UrlAddress& address)
 	std::string host = address.hostName;
 	std::string target = address.target;
 
-	//io_context требуется для всех операций ввода - вывода.
 	net::io_context ioc;
 
-	//Выполняет HTTP GET и выводит ответ
 	if (address.protocol == ProtocolType::HTTP) {
 
-		//Эти объекты выполняют ввод-вывод
 		tcp::resolver resolver(ioc);
 		beast::tcp_stream stream(ioc);
 
@@ -214,19 +167,39 @@ void linkParser(DatabaseWorker& databaseWorker, UrlAddress link, int depth, int 
 
 	std::string htmlPage = getHtmlPage(link);
 
-	if (htmlPage.size() == 0)
-	{
-		std::cout << "Analysis error: " << link.hostName << " " << link.target << std::endl;
-
-		return;
-	}
-
 	std::vector<std::string> rawLinks = pickOutLinks(htmlPage);
 
 	std::unordered_set<UrlAddress> linksUnique = uniqueLinks(rawLinks, link.protocol,
 		link.hostName);
 
-	std::string text = removeHtmlTags(htmlPage); //удаление html-тегов
 
-	std::cout << text << std::endl; //удалить
+	std::string text = indexer(htmlPage); //индексация веб-страницы
+
+	//запись слов текста в вектор
+	std::vector<std::string> wordsVec = splitText(text);
+
+	//подсчет слов в тексте
+	std::map<std::string, int> wordsCount = countWords(wordsVec);
+
+	databaseWorker.addWords(link, wordsCount);
+
+	if (depth > 0) {
+		std::lock_guard<std::mutex> lock(mtx);
+
+		size_t count = linksUnique.size();
+		size_t index = 0;
+		for (auto& link : linksUnique)
+		{
+			bool docExists = databaseWorker.documentExists(link);
+			if (!docExists)
+			{
+				tasks.push([&databaseWorker, link, depth, index, count]() {
+					linkParser (databaseWorker, link, depth - 1, index, count); 
+				});
+				index++;
+			}
+		}
+		cv.notify_one();
+	}
+
 }
