@@ -42,3 +42,5 @@ void  poolOfThreadsWorker();
 
 void linkParser(DatabaseWorker& databaseWorker, UrlAddress link,
 	int depth, int index, int ofTotalCount);
+
+std::string finalUrl(const std::string currentUrl);

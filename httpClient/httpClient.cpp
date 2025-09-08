@@ -18,7 +18,9 @@ int main()
 		DatabaseWorker databaseWorker(parserIniFile);
 
 		std::string startPage = parserIniFile.getStartPage(); //получили стартовую станицу
-		
+
+		startPage = finalUrl(startPage); //обработка редиректа (если такой есть)
+
 		UrlAddress link = sharedAddress(startPage); //сохранили порт, хост и таргет в поля структуры UrlAddress
 
 		int depth = parserIniFile.getRecursionDepth();
@@ -173,15 +175,10 @@ void linkParser(DatabaseWorker& databaseWorker, UrlAddress link, int depth, int 
 
 		std::string htmlPage = getHtmlPage(link);
 
-		if (htmlPage.size() == 0) {
-			std::cout << "htmlPage is redirected" << std::endl;
-		}
-
 		std::vector<std::string> rawLinks = pickOutLinks(htmlPage);
 
 		std::unordered_set<UrlAddress> linksUnique = uniqueLinks(rawLinks, link.protocol,
 			link.hostName);
-
 
 		std::string text = indexer(htmlPage); //индексация веб-страницы
 
@@ -216,4 +213,23 @@ void linkParser(DatabaseWorker& databaseWorker, UrlAddress link, int depth, int 
 		std::cout << ex.what() << std::endl;
 	}
 	
+}
+
+std::string finalUrl(const std::string currentUrl)
+{
+	CURLcode ret;
+	CURL* hnd = curl_easy_init();
+	const char* charCurrentUrl = currentUrl.c_str();
+	curl_easy_setopt(hnd, CURLOPT_URL, charCurrentUrl);
+	curl_easy_setopt(hnd, CURLOPT_NOPROGRESS, 1L);
+	curl_easy_setopt(hnd, CURLOPT_NOBODY, 1L);
+	curl_easy_setopt(hnd, CURLOPT_FOLLOWLOCATION, 1L);
+	ret = curl_easy_perform(hnd);
+	char* lolc;
+	curl_easy_getinfo(hnd, CURLINFO_EFFECTIVE_URL, &lolc);
+	std::string result(lolc);
+	curl_easy_cleanup(hnd);
+	hnd = NULL;
+
+	return result;
 }
