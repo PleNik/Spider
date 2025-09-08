@@ -13,6 +13,7 @@
 #include <boost/asio/ip/tcp.hpp>
 #include <boost/asio/ssl.hpp>
 #include <openssl/ssl.h>
+#include <curl/curl.h>
 
 #include "../parserFileSettingsIni.h"
 #include "../Database/dataBase.h"
@@ -21,7 +22,6 @@
 #include "pickOutLinks.h"
 #include "uniqueLinks.h"
 #include "indexer.h"
-//#include <Windows.h>
 
 #pragma execution_character_set("utf-8")
 

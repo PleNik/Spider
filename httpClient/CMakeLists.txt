@@ -23,3 +23,7 @@ target_link_libraries(HTTPClientApp OpenSSL::SSL)
 target_include_directories(HTTPClientApp PRIVATE ${Boost_INCLUDE_DIRS})
 
 target_link_libraries(HTTPClientApp ${Boost_LIBRARIES})
+
+#target_link_directories(HTTPClientApp PUBLIC CURL_ROOT_DIR::CURL)#test
+
+target_link_libraries(HTTPClientApp CURL::libcurl)#test

@@ -15,7 +15,7 @@ std::string indexer(const std::string& htmlPage)
 	result = std::regex_replace(result, r, " ");
 
 	//удаление знаков препинания, табуляции, переноса строк и т.д.
-	std::vector<char> v_ispunct{'\t', '\n', '\r', '{', '}', '<', '>', '%', '[', ']', ':', '(', ')', ';', '?',
+	std::vector<char> v_ispunct{ '\t', '\n', '\r', '{', '}', '<', '>', '%', '[', ']', ':', '(', ')', ';', '?',
 	'.', '~', '!', '+', '-', '*', '/', '^', '&', '|', '=', ',', '"', '#', '\\', '\v', '\f', '@', '_', '\''};
 
 	for (size_t i = 0; i < v_ispunct.size(); i++) {

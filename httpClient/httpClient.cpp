@@ -145,6 +145,7 @@ std::string getHtmlPage(const UrlAddress& address)
 		std::cout << ex.what() << std::endl;
 	}
 
+
 	return htmlPage;
 }
 
@@ -171,6 +172,10 @@ void linkParser(DatabaseWorker& databaseWorker, UrlAddress link, int depth, int 
 		std::this_thread::sleep_for(std::chrono::milliseconds(500));
 
 		std::string htmlPage = getHtmlPage(link);
+
+		if (htmlPage.size() == 0) {
+			std::cout << "htmlPage is redirected" << std::endl;
+		}
 
 		std::vector<std::string> rawLinks = pickOutLinks(htmlPage);
 
